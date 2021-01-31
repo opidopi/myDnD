@@ -1121,6 +1121,21 @@ namespace Character_Sheet
             get;
             set;
         }
+        public string castingAbility
+        {
+            get;
+            set;
+        }
+        public int attBonusMod
+        {
+            get;
+            set;
+        }
+        public int saveBonusMod
+        {
+            get;
+            set;
+        }
         public List<Spell> knownSpells
         {
             get;
@@ -1143,6 +1158,7 @@ namespace Character_Sheet
             preparedSpells = new List<Spell>();
             Name = "";
             castingClass = "";
+            castingAbility = "";
         }
     }
 }

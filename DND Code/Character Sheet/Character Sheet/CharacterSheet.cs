@@ -15,12 +15,14 @@ namespace Character_Sheet
     public partial class CharacterSheet : Form
     {
         public PlayerCharacter player;
-        List<Stat> MovementTypes;
+        public List<Stat> MovementTypes;
+        public List<SpellBook> openSpellBooks;
 
         public CharacterSheet()
         {
             InitializeComponent();
             player = new PlayerCharacter();
+            openSpellBooks = new List<SpellBook>();
             InitializeCharacter();
         }
 
@@ -28,6 +30,7 @@ namespace Character_Sheet
         {
             InitializeComponent();
             player = pPlayer;
+            openSpellBooks = new List<SpellBook>();
             InitializeCharacter();
         }
 
@@ -299,7 +302,8 @@ namespace Character_Sheet
             }
             if (noneSelected && AttackPanel.Controls.Count > 0)
                 ((AttackTab)AttackPanel.Controls[0]).Selected.Checked = true;
-
+            foreach (SpellBook book in openSpellBooks)
+                book.refreshCalcs();
         }
 
         private void EditCharName_Click(object sender, EventArgs e)
@@ -911,7 +915,9 @@ namespace Character_Sheet
         private void SpellBookButton_Click(object sender, EventArgs e)
         {
             SpellBookPicker sb = new SpellBookPicker(this);
-            sb.ShowDialog();
+            DialogResult result = sb.ShowDialog();
+            if (result == DialogResult.OK && openSpellBooks.Count > 0)
+                openSpellBooks[openSpellBooks.Count - 1].Focus();
         }
     }
 }

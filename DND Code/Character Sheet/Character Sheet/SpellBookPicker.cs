@@ -45,16 +45,16 @@ namespace Character_Sheet
                     ssb = new CharSpellBook();
                     ssb.Name = BookNameBox.Text;
                     charSheetMain.player.SpellBooks.Add(ssb);
-                    SpellBook sb = new SpellBook(charSheetMain, ssb);
-                    sb.Show();
                 }
                 else
                 {
                     ssb = BookComboBox.SelectedItem as CharSpellBook;
                     ssb.Name = BookNameBox.Text;
-                    SpellBook sb = new SpellBook(charSheetMain, ssb);
-                    sb.Show();
                 }
+                SpellBook sb = new SpellBook(charSheetMain, ssb);
+                sb.Show();
+                charSheetMain.openSpellBooks.Add(sb);
+                this.DialogResult = DialogResult.OK;
                 Close();
             }
         }

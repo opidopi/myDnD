@@ -127,6 +127,7 @@
             this.ClassCombo.Name = "ClassCombo";
             this.ClassCombo.Size = new System.Drawing.Size(186, 33);
             this.ClassCombo.TabIndex = 2;
+            this.ClassCombo.SelectedIndexChanged += new System.EventHandler(this.ClassCombo_SelectedIndexChanged);
             // 
             // AbilityCombo
             // 
@@ -139,6 +140,7 @@
             this.AbilityCombo.Size = new System.Drawing.Size(172, 33);
             this.AbilityCombo.TabIndex = 3;
             this.AbilityCombo.ValueMember = "Name";
+            this.AbilityCombo.SelectedIndexChanged += new System.EventHandler(this.AbilityCombo_SelectedIndexChanged);
             // 
             // SaveDC
             // 
@@ -288,6 +290,7 @@
             this.allSpellList.FormattingEnabled = true;
             this.allSpellList.Location = new System.Drawing.Point(216, 559);
             this.allSpellList.Name = "allSpellList";
+            this.allSpellList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.allSpellList.Size = new System.Drawing.Size(181, 238);
             this.allSpellList.TabIndex = 17;
             this.allSpellList.ValueMember = "Name";

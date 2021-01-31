@@ -21,9 +21,7 @@ namespace Character_Sheet
         public SpellBook(CharacterSheet pCharSheet, CharSpellBook pSpellBook)
         {
             charSheetMain = pCharSheet;
-            //change to passed value
-            cSpellBook = new CharSpellBook();
-            //initialize values from passed spellbook
+            cSpellBook = pSpellBook;
             InitializeComponent();
             StreamReader reader = new StreamReader("AllSpells.json");
             string json = reader.ReadToEnd();
@@ -31,25 +29,65 @@ namespace Character_Sheet
             foreach (Spell spell in allSpells)
                 allSpellList.Items.Add(spell);
             ClassCombo.Items.Add("Bard");
+            if(cSpellBook.castingClass.Equals("Bard"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Cleric");
+            if (cSpellBook.castingClass.Equals("Cleric"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Druid");
+            if (cSpellBook.castingClass.Equals("Druid"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Paladin");
+            if (cSpellBook.castingClass.Equals("Paladin"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Ranger");
+            if (cSpellBook.castingClass.Equals("Ranger"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Sorcerer");
+            if (cSpellBook.castingClass.Equals("Sorcerer"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Warlock");
+            if (cSpellBook.castingClass.Equals("Warlock"))
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             ClassCombo.Items.Add("Wizard");
-            ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
+            if (ClassCombo.SelectedItem == null)
+                ClassCombo.SelectedItem = ClassCombo.Items[ClassCombo.Items.Count - 1];
             foreach (Stat cStat in charSheetMain.player.CharacterStats.CoreAttributes)
-                if(cStat.Name.Equals("Intelligence")|| cStat.Name.Equals("Wisdom")||
-                    cStat.Name.Equals("Charisma")) AbilityCombo.Items.Add(cStat);
-            AbilityCombo.SelectedItem = AbilityCombo.Items[0];
-            spellSaveBonus = 0;
-            spellAttackBonus = 0;
+                if (cStat.Name.Equals("Intelligence") || cStat.Name.Equals("Wisdom") ||
+                    cStat.Name.Equals("Charisma"))
+                {
+                    AbilityCombo.Items.Add(cStat);
+                    if (cStat.Name.Equals(cSpellBook.castingAbility))
+                        AbilityCombo.SelectedItem = cStat;
+                }
+            if(AbilityCombo.SelectedItem == null)
+                AbilityCombo.SelectedItem = AbilityCombo.Items[0];
 
+            spellSaveBonus = cSpellBook.saveBonusMod;
+            spellAttackBonus = cSpellBook.attBonusMod;
+            foreach (Spell sp in cSpellBook.knownSpells)
+                knownSpellList.Items.Add(sp);
+            foreach (Spell sp in cSpellBook.cantrips)
+                Cantrips.Items.Add(sp);
+            foreach(Spell sp in cSpellBook.preparedSpells)
+            {
+                foreach(Control con in Controls)
+                {
+                    if(con is ListBox lb)
+                    {
+                        if (lb.Name.EndsWith(sp.Level.ToString()))
+                        {
+                            lb.Items.Add(sp);
+                            break;
+                        }
+                    }
+                }
+            }
+            calcPrepSpells();
             refreshCalcs();
         }
 
-        private void refreshCalcs()
+        public void refreshCalcs()
         {
             int totalAB = 0;
             totalAB += ((CoreAttribute)AbilityCombo.SelectedItem).AbilityModifier;
@@ -188,18 +226,20 @@ namespace Character_Sheet
         {
             spellSaveBonus = (int)SaveDC.Value - (8 + ((CoreAttribute)AbilityCombo.SelectedItem).AbilityModifier
                     + charSheetMain.player.CharacterStats.ProficiencyBonus.Value);
-
+            cSpellBook.saveBonusMod = spellSaveBonus;
         }
 
         private void ABup_Click(object sender, EventArgs e)
         {
             spellAttackBonus++;
+            cSpellBook.attBonusMod = spellAttackBonus;
             refreshCalcs();
         }
 
         private void ABdown_Click(object sender, EventArgs e)
         {
             spellAttackBonus--;
+            cSpellBook.attBonusMod = spellAttackBonus;
             refreshCalcs();
         }
 
@@ -207,16 +247,20 @@ namespace Character_Sheet
         {
             if(allSpellList.SelectedItem != null)
             {
-                if(knownSpellList.Items.Contains(allSpellList.SelectedItem))
-                    MessageBox.Show(((Spell)allSpellList.SelectedItem).Name + " is already in your known Spells list.");
-                else
+                List<Spell> sSpellList = new List<Spell>();
+                foreach (Spell sSpell in allSpellList.SelectedItems)
+                    sSpellList.Add(sSpell);
+                foreach (Spell sSpell in sSpellList)
                 {
-                    knownSpellList.Items.Add(allSpellList.SelectedItem);
-                    knownSpellList.SelectedItem = allSpellList.SelectedItem;
-                    cSpellBook.knownSpells.Add(knownSpellList.SelectedItem as Spell);
-                    MessageBox.Show(((Spell)knownSpellList.SelectedItem).Name + " has been added to your known spells.");
+                    if (knownSpellList.Items.Contains(sSpell))
+                        MessageBox.Show(((Spell)allSpellList.SelectedItem).Name + " is already in your known Spells list.");
+                    else
+                    {
+                        knownSpellList.Items.Add(sSpell);
+                        knownSpellList.SelectedItem = allSpellList.SelectedItem;
+                        cSpellBook.knownSpells.Add(knownSpellList.SelectedItem as Spell);
+                    }
                 }
-
             }
             else
             {
@@ -372,6 +416,23 @@ namespace Character_Sheet
                 }
             }
             TotalPrepLabel.Text = "Total Prepared : " + prepTotal.ToString();
+        }
+
+        private void ClassCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cSpellBook.castingClass = ClassCombo.SelectedItem.ToString();
+        }
+
+        private void AbilityCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cSpellBook.castingAbility = ((CoreAttribute)AbilityCombo.SelectedItem).Name;
+            refreshCalcs();
+        }
+
+        public void Close()
+        {
+            charSheetMain.openSpellBooks.Remove(this);
+            base.Close();
         }
     }
 }
