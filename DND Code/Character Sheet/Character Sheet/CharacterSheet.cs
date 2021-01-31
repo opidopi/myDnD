@@ -910,8 +910,8 @@ namespace Character_Sheet
 
         private void SpellBookButton_Click(object sender, EventArgs e)
         {
-            SpellBook sb = new SpellBook(this);
-            sb.Show();
+            SpellBookPicker sb = new SpellBookPicker(this);
+            sb.ShowDialog();
         }
     }
 }

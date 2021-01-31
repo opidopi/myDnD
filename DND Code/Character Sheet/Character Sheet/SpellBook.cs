@@ -15,11 +15,15 @@ namespace Character_Sheet
     public partial class SpellBook : Form
     {
         CharacterSheet charSheetMain;
+        CharSpellBook cSpellBook;
         int spellSaveBonus;
         int spellAttackBonus;
-        public SpellBook(CharacterSheet pCharSheet)
+        public SpellBook(CharacterSheet pCharSheet, CharSpellBook pSpellBook)
         {
             charSheetMain = pCharSheet;
+            //change to passed value
+            cSpellBook = new CharSpellBook();
+            //initialize values from passed spellbook
             InitializeComponent();
             StreamReader reader = new StreamReader("AllSpells.json");
             string json = reader.ReadToEnd();
@@ -209,12 +213,14 @@ namespace Character_Sheet
                 {
                     knownSpellList.Items.Add(allSpellList.SelectedItem);
                     knownSpellList.SelectedItem = allSpellList.SelectedItem;
+                    cSpellBook.knownSpells.Add(knownSpellList.SelectedItem as Spell);
+                    MessageBox.Show(((Spell)knownSpellList.SelectedItem).Name + " has been added to your known spells.");
                 }
 
             }
             else
             {
-                MessageBox.Show("No unkown Spell selected.");
+                MessageBox.Show("No Spell in All Spells List is selected.");
             }
         }
 
@@ -224,7 +230,30 @@ namespace Character_Sheet
             {
                 if(changedBox.SelectedItem != null)
                 {
-                    foreach(Control con in Controls)
+                    Spell selectedSpell = changedBox.SelectedItem as Spell;
+                    selectedSpellName.Text = selectedSpell.Name;
+                    if(selectedSpell.Cantrip)
+                        selectedSpellLvl.Text = "";
+                    else if (selectedSpell.Level.ToString().EndsWith("1"))
+                        selectedSpellLvl.Text = selectedSpell.Level.ToString() +"st Level";
+                    else if (selectedSpell.Level.ToString().EndsWith("2"))
+                        selectedSpellLvl.Text = selectedSpell.Level.ToString() + "nd Level";
+                    else if (selectedSpell.Level.ToString().EndsWith("3"))
+                        selectedSpellLvl.Text = selectedSpell.Level.ToString() + "rd Level";
+                    else
+                        selectedSpellLvl.Text = selectedSpell.Level.ToString() + "th Level";
+                    selectedSpellSchool.Text = selectedSpell.School;
+                    if (selectedSpell.Ritual)
+                        selectedSpellSchool.Text += " (ritual)";
+                    else if (selectedSpell.Cantrip)
+                        selectedSpellSchool.Text += " Cantrip";
+                    CastingTime.Text = selectedSpell.CastingTime;
+                    Range.Text = selectedSpell.Range;
+                    Duration.Text = selectedSpell.Duration;
+                    DescriptionTextBox.Text = "";
+                    foreach (string line in selectedSpell.Description)
+                        DescriptionTextBox.Text += line + "\n";
+                    foreach (Control con in Controls)
                     {
                         if (con is ListBox otherBox)
                             if (otherBox != changedBox)
@@ -247,7 +276,7 @@ namespace Character_Sheet
                 DialogResult result = MessageBox.Show(selectedSpell.Name + " is not in your List of known Spells." +
                     "\nDo you wish to add it to your known spells list?", "Unkown Spell Selected", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
-                    knownSpellList.Items.Add(selectedSpell);
+                    AddToKnownSpells_Click(null,null);
                 else
                     selectedSpell = null;
             }
@@ -265,6 +294,8 @@ namespace Character_Sheet
                     {
                         Cantrips.Items.Add(selectedSpell);
                         Cantrips.SelectedItem = selectedSpell;
+                        cSpellBook.cantrips.Add(selectedSpell);
+                        MessageBox.Show(selectedSpell.Name + " has been added to your cantrips.");
                     }
                 }
                 else
@@ -281,6 +312,9 @@ namespace Character_Sheet
                                 {
                                     lb.Items.Add(selectedSpell);
                                     lb.SelectedItem = selectedSpell;
+                                    cSpellBook.preparedSpells.Add(selectedSpell);
+                                    MessageBox.Show(selectedSpell.Name + " has been prepared.");
+                                    calcPrepSpells();
                                 }
                                 break;
                             }
@@ -288,6 +322,56 @@ namespace Character_Sheet
                     }
                 }
             }
+        }
+
+        private void RemoveSpell_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in Controls)
+            {
+                if (con is ListBox lb)
+                {
+                    if(lb.SelectedItem != null)
+                    {
+                        if (lb == knownSpellList)
+                        {
+                            DialogResult result = MessageBox.Show("Are you sure you want to remove " +
+                                ((Spell)lb.SelectedItem).Name + "from your known spells?",
+                                "Remove Spell", MessageBoxButtons.YesNoCancel);
+                            if (result == DialogResult.Yes)
+                                lb.Items.Remove(lb.SelectedItem);
+                        }
+                        else if(lb == Cantrips)
+                        {
+                            DialogResult result = MessageBox.Show("Are you sure you want to remove " +
+                                ((Spell)lb.SelectedItem).Name + "from your cantrips?",
+                                "Remove Spell", MessageBoxButtons.YesNoCancel);
+                            if (result == DialogResult.Yes)
+                                lb.Items.Remove(lb.SelectedItem);
+                        }
+                        else if (lb.Name.Contains("listBoxlvl"))
+                        {
+                            MessageBox.Show(((Spell)lb.SelectedItem).Name + " will be removed from prepared spells.");
+                            lb.Items.Remove(lb.SelectedItem);
+                            calcPrepSpells();
+                        }
+                        else if (lb == allSpellList)
+                            MessageBox.Show("Cannot remove spells from all spells list.");
+                    }
+                }
+            }
+        }
+        private void calcPrepSpells()
+        {
+            int prepTotal = 0;
+            foreach (Control con in Controls)
+            {
+                if (con is ListBox lb)
+                {
+                    if (lb.Name.Contains("listBoxlvl"))
+                        prepTotal += lb.Items.Count;
+                }
+            }
+            TotalPrepLabel.Text = "Total Prepared : " + prepTotal.ToString();
         }
     }
 }

@@ -95,6 +95,11 @@ namespace Character_Sheet
             get;
             set;
         }
+        public List<CharSpellBook> SpellBooks
+        {
+            get;
+            set;
+        }
         public PlayerCharacter ()
         {
             CharacterName = "";
@@ -114,6 +119,7 @@ namespace Character_Sheet
             FeatsNtraits = new List<Feature>();
             EquipmentList = new List<Equipment>();
             AttackList = new List<Attack>();
+            SpellBooks = new List<CharSpellBook>();
 
         }
         public string SaveCharacter()
@@ -1101,6 +1107,42 @@ namespace Character_Sheet
         {
             get;
             set;
+        }
+    }
+    public class CharSpellBook
+    {
+        public string Name
+        {
+            get;
+            set;
+        }
+        public string castingClass
+        {
+            get;
+            set;
+        }
+        public List<Spell> knownSpells
+        {
+            get;
+            set;
+        }
+        public List<Spell> cantrips
+        {
+            get;
+            set;
+        }
+        public List<Spell> preparedSpells
+        {
+            get;
+            set;
+        }
+        public CharSpellBook()
+        {
+            knownSpells = new List<Spell>();
+            cantrips = new List<Spell>();
+            preparedSpells = new List<Spell>();
+            Name = "";
+            castingClass = "";
         }
     }
 }

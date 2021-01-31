@@ -46,7 +46,7 @@
             this.allSpellList = new System.Windows.Forms.ListBox();
             this.selectedSpellName = new System.Windows.Forms.Label();
             this.selectedSpellLvl = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.DescriptionTextBox = new System.Windows.Forms.RichTextBox();
             this.selectedSpellSchool = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -96,6 +96,7 @@
             this.Duration = new System.Windows.Forms.Label();
             this.AddToKnownSpells = new System.Windows.Forms.Button();
             this.PrepareSpell = new System.Windows.Forms.Button();
+            this.RemoveSpell = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SaveDC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ASlotsLvl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSlotsLvl1)).BeginInit();
@@ -304,25 +305,29 @@
             // 
             // selectedSpellLvl
             // 
+            this.selectedSpellLvl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedSpellLvl.AutoSize = true;
-            this.selectedSpellLvl.Location = new System.Drawing.Point(529, 50);
+            this.selectedSpellLvl.Location = new System.Drawing.Point(498, 50);
             this.selectedSpellLvl.Name = "selectedSpellLvl";
             this.selectedSpellLvl.Size = new System.Drawing.Size(53, 13);
             this.selectedSpellLvl.TabIndex = 19;
             this.selectedSpellLvl.Text = "Nth Level";
             // 
-            // richTextBox1
+            // DescriptionTextBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(403, 148);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(265, 395);
-            this.richTextBox1.TabIndex = 20;
-            this.richTextBox1.Text = "";
+            this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DescriptionTextBox.Location = new System.Drawing.Point(403, 148);
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(265, 395);
+            this.DescriptionTextBox.TabIndex = 20;
+            this.DescriptionTextBox.Text = "";
             // 
             // selectedSpellSchool
             // 
+            this.selectedSpellSchool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedSpellSchool.AutoSize = true;
-            this.selectedSpellSchool.Location = new System.Drawing.Point(588, 50);
+            this.selectedSpellSchool.Location = new System.Drawing.Point(557, 50);
             this.selectedSpellSchool.Name = "selectedSpellSchool";
             this.selectedSpellSchool.Size = new System.Drawing.Size(40, 13);
             this.selectedSpellSchool.TabIndex = 21;
@@ -623,7 +628,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(363, 301);
+            this.label20.Location = new System.Drawing.Point(363, 297);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(30, 13);
             this.label20.TabIndex = 58;
@@ -735,7 +740,7 @@
             // 
             // AddToKnownSpells
             // 
-            this.AddToKnownSpells.Location = new System.Drawing.Point(403, 550);
+            this.AddToKnownSpells.Location = new System.Drawing.Point(403, 559);
             this.AddToKnownSpells.Name = "AddToKnownSpells";
             this.AddToKnownSpells.Size = new System.Drawing.Size(130, 23);
             this.AddToKnownSpells.TabIndex = 70;
@@ -745,7 +750,7 @@
             // 
             // PrepareSpell
             // 
-            this.PrepareSpell.Location = new System.Drawing.Point(404, 580);
+            this.PrepareSpell.Location = new System.Drawing.Point(404, 588);
             this.PrepareSpell.Name = "PrepareSpell";
             this.PrepareSpell.Size = new System.Drawing.Size(129, 23);
             this.PrepareSpell.TabIndex = 71;
@@ -753,11 +758,22 @@
             this.PrepareSpell.UseVisualStyleBackColor = true;
             this.PrepareSpell.Click += new System.EventHandler(this.PrepareSpell_Click);
             // 
+            // RemoveSpell
+            // 
+            this.RemoveSpell.Location = new System.Drawing.Point(404, 617);
+            this.RemoveSpell.Name = "RemoveSpell";
+            this.RemoveSpell.Size = new System.Drawing.Size(129, 23);
+            this.RemoveSpell.TabIndex = 72;
+            this.RemoveSpell.Text = "Remove Spell";
+            this.RemoveSpell.UseVisualStyleBackColor = true;
+            this.RemoveSpell.Click += new System.EventHandler(this.RemoveSpell_Click);
+            // 
             // SpellBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 809);
+            this.Controls.Add(this.RemoveSpell);
             this.Controls.Add(this.PrepareSpell);
             this.Controls.Add(this.AddToKnownSpells);
             this.Controls.Add(this.Duration);
@@ -807,7 +823,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.selectedSpellSchool);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.selectedSpellLvl);
             this.Controls.Add(this.selectedSpellName);
             this.Controls.Add(this.allSpellList);
@@ -871,7 +887,7 @@
         private System.Windows.Forms.ListBox allSpellList;
         private System.Windows.Forms.Label selectedSpellName;
         private System.Windows.Forms.Label selectedSpellLvl;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox DescriptionTextBox;
         private System.Windows.Forms.Label selectedSpellSchool;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -921,5 +937,6 @@
         private System.Windows.Forms.Label Duration;
         private System.Windows.Forms.Button AddToKnownSpells;
         private System.Windows.Forms.Button PrepareSpell;
+        private System.Windows.Forms.Button RemoveSpell;
     }
 }
