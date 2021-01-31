@@ -919,5 +919,38 @@ namespace Character_Sheet
             if (result == DialogResult.OK && openSpellBooks.Count > 0)
                 openSpellBooks[openSpellBooks.Count - 1].Focus();
         }
+
+        private void RemoveAttackButton_Click(object sender, EventArgs e)
+        {
+            Attack selectedAttack = null;
+            foreach(Control control in AttackPanel.Controls)
+                if(((AttackTab)control).Selected.Checked)
+                {
+                    selectedAttack = ((AttackTab)control).cAttack;
+                    break;
+                }
+            bool doTheThing = true;
+            if (selectedAttack != null)
+            {
+                DialogResult noSelect = MessageBox.Show("Do you wish to remove " + selectedAttack.Name + "?", "Remove Attack", MessageBoxButtons.YesNoCancel);
+                if (noSelect != DialogResult.Yes)
+                    doTheThing = false;
+            }
+            else
+                MessageBox.Show("No Attack Selected");
+
+            if(doTheThing)
+            {
+                Control removeCon = null;
+                foreach (Control control in AttackPanel.Controls)
+                    if (((AttackTab)control).Selected.Checked)
+                    {
+                        removeCon = control;
+                        break;
+                    }
+                if (removeCon != null)
+                    removeCon.Dispose();
+            }
+        }
     }
 }

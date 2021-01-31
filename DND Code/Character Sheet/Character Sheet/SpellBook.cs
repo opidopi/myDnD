@@ -293,8 +293,54 @@ namespace Character_Sheet
                         selectedSpellSchool.Text += " Cantrip";
                     CastingTime.Text = selectedSpell.CastingTime;
                     Range.Text = selectedSpell.Range;
+                    Comps.Text = selectedSpell.Components;
                     Duration.Text = selectedSpell.Duration;
-                    DescriptionTextBox.Text = "";
+                    DescriptionTextBox.Text = "Classes: ";
+                    if (selectedSpell.Classes.Bard)
+                        DescriptionTextBox.Text += "Bard";
+                    if(selectedSpell.Classes.Cleric)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Cleric";
+                    }
+                    if (selectedSpell.Classes.Druid)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Druid";
+                    }
+                    if (selectedSpell.Classes.Paladin)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Paladin";
+                    }
+                    if (selectedSpell.Classes.Ranger)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Ranger";
+                    }
+                    if (selectedSpell.Classes.Sorcerer)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Sorcerer";
+                    }
+                    if (selectedSpell.Classes.Warlock)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Warlock";
+                    }
+                    if (selectedSpell.Classes.Wizard)
+                    {
+                        if (!DescriptionTextBox.Text.Equals("Classes: "))
+                            DescriptionTextBox.Text += ", ";
+                        DescriptionTextBox.Text += "Wizard";
+                    }
+                    DescriptionTextBox.Text += "\n\n";
                     foreach (string line in selectedSpell.Description)
                         DescriptionTextBox.Text += line + "\n";
                     foreach (Control con in Controls)

@@ -1332,6 +1332,7 @@
             this.RemoveAttackButton.TabIndex = 67;
             this.RemoveAttackButton.Text = "Remove Attack";
             this.RemoveAttackButton.UseVisualStyleBackColor = true;
+            this.RemoveAttackButton.Click += new System.EventHandler(this.RemoveAttackButton_Click);
             // 
             // label10
             // 
