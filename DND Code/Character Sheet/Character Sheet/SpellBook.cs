@@ -26,6 +26,7 @@ namespace Character_Sheet
             StreamReader reader = new StreamReader("AllSpells.json");
             string json = reader.ReadToEnd();
             List<Spell> allSpells = JsonConvert.DeserializeObject<List<Spell>>(json);
+            allSpells = allSpells.OrderBy(o => o.Name).ToList();
             foreach (Spell spell in allSpells)
                 allSpellList.Items.Add(spell);
             ClassCombo.Items.Add("Bard");
@@ -85,6 +86,39 @@ namespace Character_Sheet
             }
             calcPrepSpells();
             refreshCalcs();
+            searchString sString = new searchString(allSpells,allSpellList);
+            searchBox.DataBindings.Add("Text", sString, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        class searchString
+        {
+            private string baseValue;
+            private List<Spell> allSpells;
+            private ListBox allSpellsListBox;
+            public string Value
+            {
+                get { return baseValue; }
+                set
+                {
+                    if (value == Value)
+                        return;
+                    baseValue = value;
+                    allSpellsListBox.Items.Clear();
+                    foreach(Spell sp in allSpells)
+                        if(sp.Name.ToLower().StartsWith(baseValue.ToLower()))
+                        {
+                            allSpellsListBox.Items.Add(sp);
+                        }
+                    if (allSpellsListBox.Items.Count > 0)
+                        allSpellsListBox.SelectedIndex = 0;
+                }
+            }
+            public searchString(List<Spell> pSpells, ListBox pLB)
+            {
+                allSpells = pSpells;
+                allSpellsListBox = pLB;
+            }
+
         }
 
         public void refreshCalcs()

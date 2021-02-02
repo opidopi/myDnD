@@ -199,7 +199,6 @@
             // 
             // AgeSizePanel
             // 
-            this.AgeSizePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AgeSizePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AgeSizePanel.Controls.Add(this.DecSize);
             this.AgeSizePanel.Controls.Add(this.EditCharStrings);
@@ -741,7 +740,6 @@
             // 
             // NewButton
             // 
-            this.NewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.NewButton.Location = new System.Drawing.Point(6, 836);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(39, 23);
@@ -922,7 +920,6 @@
             // 
             // SavesLabel
             // 
-            this.SavesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SavesLabel.AutoSize = true;
             this.SavesLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SavesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -934,7 +931,6 @@
             // 
             // SaveProfLabel
             // 
-            this.SaveProfLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveProfLabel.AutoSize = true;
             this.SaveProfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveProfLabel.Location = new System.Drawing.Point(403, 146);
@@ -945,7 +941,6 @@
             // 
             // AdditionalModLabel
             // 
-            this.AdditionalModLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AdditionalModLabel.AutoSize = true;
             this.AdditionalModLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdditionalModLabel.Location = new System.Drawing.Point(569, 146);
@@ -956,8 +951,6 @@
             // 
             // SkillPanel
             // 
-            this.SkillPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.SkillPanel.AutoScroll = true;
             this.SkillPanel.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.SkillPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -968,7 +961,6 @@
             // 
             // SavesPanel
             // 
-            this.SavesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SavesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SavesPanel.Location = new System.Drawing.Point(406, 162);
             this.SavesPanel.Name = "SavesPanel";
@@ -978,7 +970,6 @@
             // 
             // MovementPanel
             // 
-            this.MovementPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MovementPanel.AutoScroll = true;
             this.MovementPanel.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.MovementPanel.Location = new System.Drawing.Point(672, 139);
@@ -988,7 +979,6 @@
             // 
             // MovementLabel
             // 
-            this.MovementLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MovementLabel.AutoSize = true;
             this.MovementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MovementLabel.Location = new System.Drawing.Point(684, 220);
@@ -999,7 +989,6 @@
             // 
             // SpeedLabel
             // 
-            this.SpeedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SpeedLabel.AutoSize = true;
             this.SpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpeedLabel.Location = new System.Drawing.Point(790, 220);
@@ -1010,7 +999,6 @@
             // 
             // AddMovement
             // 
-            this.AddMovement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddMovement.Location = new System.Drawing.Point(662, 218);
             this.AddMovement.Name = "AddMovement";
             this.AddMovement.Size = new System.Drawing.Size(20, 20);
@@ -1021,7 +1009,6 @@
             // 
             // PlayerClassLabel
             // 
-            this.PlayerClassLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PlayerClassLabel.AutoSize = true;
             this.PlayerClassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerClassLabel.Location = new System.Drawing.Point(669, 257);
@@ -1032,7 +1019,6 @@
             // 
             // LevelUpButton
             // 
-            this.LevelUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LevelUpButton.Location = new System.Drawing.Point(662, 317);
             this.LevelUpButton.Name = "LevelUpButton";
             this.LevelUpButton.Size = new System.Drawing.Size(89, 23);
@@ -1043,7 +1029,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(669, 241);
@@ -1054,7 +1039,6 @@
             // 
             // ClassReference
             // 
-            this.ClassReference.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ClassReference.Location = new System.Drawing.Point(757, 317);
             this.ClassReference.Name = "ClassReference";
             this.ClassReference.Size = new System.Drawing.Size(111, 23);
@@ -1065,7 +1049,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(498, 357);
@@ -1076,7 +1059,6 @@
             // 
             // FeatureListBox
             // 
-            this.FeatureListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FeatureListBox.DisplayMember = "Name";
             this.FeatureListBox.FormattingEnabled = true;
             this.FeatureListBox.Location = new System.Drawing.Point(501, 378);
@@ -1088,7 +1070,6 @@
             // 
             // FeatDescription
             // 
-            this.FeatDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FeatDescription.Location = new System.Drawing.Point(501, 492);
             this.FeatDescription.Name = "FeatDescription";
             this.FeatDescription.ReadOnly = true;
@@ -1098,7 +1079,6 @@
             // 
             // AddFeatButton
             // 
-            this.AddFeatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddFeatButton.Location = new System.Drawing.Point(662, 351);
             this.AddFeatButton.Name = "AddFeatButton";
             this.AddFeatButton.Size = new System.Drawing.Size(61, 23);
@@ -1109,7 +1089,6 @@
             // 
             // RemoveFeatButton
             // 
-            this.RemoveFeatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveFeatButton.Location = new System.Drawing.Point(729, 351);
             this.RemoveFeatButton.Name = "RemoveFeatButton";
             this.RemoveFeatButton.Size = new System.Drawing.Size(80, 23);
@@ -1120,7 +1099,6 @@
             // 
             // Copper
             // 
-            this.Copper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Copper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Copper.Location = new System.Drawing.Point(6, 672);
             this.Copper.Name = "Copper";
@@ -1131,7 +1109,6 @@
             // 
             // Silver
             // 
-            this.Silver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Silver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Silver.Location = new System.Drawing.Point(6, 704);
             this.Silver.Name = "Silver";
@@ -1142,7 +1119,6 @@
             // 
             // Elisium
             // 
-            this.Elisium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Elisium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Elisium.Location = new System.Drawing.Point(6, 736);
             this.Elisium.Name = "Elisium";
@@ -1153,7 +1129,6 @@
             // 
             // Gold
             // 
-            this.Gold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Gold.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gold.Location = new System.Drawing.Point(6, 768);
             this.Gold.Name = "Gold";
@@ -1164,7 +1139,6 @@
             // 
             // Platinum
             // 
-            this.Platinum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Platinum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Platinum.Location = new System.Drawing.Point(6, 800);
             this.Platinum.Name = "Platinum";
@@ -1175,7 +1149,6 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(63, 679);
             this.label4.Name = "label4";
@@ -1185,7 +1158,6 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(63, 711);
             this.label5.Name = "label5";
@@ -1195,7 +1167,6 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(63, 743);
             this.label6.Name = "label6";
@@ -1205,7 +1176,6 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(63, 775);
             this.label7.Name = "label7";
@@ -1215,7 +1185,6 @@
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(63, 807);
             this.label8.Name = "label8";
@@ -1225,7 +1194,6 @@
             // 
             // EquipmentListBox
             // 
-            this.EquipmentListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EquipmentListBox.DisplayMember = "Name";
             this.EquipmentListBox.FormattingEnabled = true;
             this.EquipmentListBox.Location = new System.Drawing.Point(140, 698);
@@ -1237,7 +1205,6 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(175, 672);
@@ -1248,8 +1215,6 @@
             // 
             // EquipmentDescription
             // 
-            this.EquipmentDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentDescription.Location = new System.Drawing.Point(297, 698);
             this.EquipmentDescription.Name = "EquipmentDescription";
             this.EquipmentDescription.ReadOnly = true;
@@ -1259,7 +1224,6 @@
             // 
             // AddEquipButton
             // 
-            this.AddEquipButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddEquipButton.Location = new System.Drawing.Point(297, 669);
             this.AddEquipButton.Name = "AddEquipButton";
             this.AddEquipButton.Size = new System.Drawing.Size(95, 23);
@@ -1270,7 +1234,6 @@
             // 
             // RemoveEquipButton
             // 
-            this.RemoveEquipButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveEquipButton.Location = new System.Drawing.Point(398, 669);
             this.RemoveEquipButton.Name = "RemoveEquipButton";
             this.RemoveEquipButton.Size = new System.Drawing.Size(94, 23);
@@ -1281,8 +1244,6 @@
             // 
             // AttackPanel
             // 
-            this.AttackPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AttackPanel.AutoScroll = true;
             this.AttackPanel.AutoScrollMinSize = new System.Drawing.Size(1, 1);
             this.AttackPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1293,7 +1254,6 @@
             // 
             // AttackDescription
             // 
-            this.AttackDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AttackDescription.Location = new System.Drawing.Point(501, 762);
             this.AttackDescription.Name = "AttackDescription";
             this.AttackDescription.ReadOnly = true;
@@ -1303,7 +1263,6 @@
             // 
             // AddAttackButton
             // 
-            this.AddAttackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddAttackButton.Location = new System.Drawing.Point(615, 637);
             this.AddAttackButton.Name = "AddAttackButton";
             this.AddAttackButton.Size = new System.Drawing.Size(71, 23);
@@ -1314,7 +1273,6 @@
             // 
             // EditAttackButton
             // 
-            this.EditAttackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EditAttackButton.Location = new System.Drawing.Point(692, 637);
             this.EditAttackButton.Name = "EditAttackButton";
             this.EditAttackButton.Size = new System.Drawing.Size(71, 23);
@@ -1325,7 +1283,6 @@
             // 
             // RemoveAttackButton
             // 
-            this.RemoveAttackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveAttackButton.Location = new System.Drawing.Point(769, 637);
             this.RemoveAttackButton.Name = "RemoveAttackButton";
             this.RemoveAttackButton.Size = new System.Drawing.Size(103, 23);
@@ -1336,7 +1293,6 @@
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(498, 640);
@@ -1347,7 +1303,6 @@
             // 
             // Save
             // 
-            this.Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Save.Location = new System.Drawing.Point(45, 836);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(46, 23);
@@ -1358,7 +1313,6 @@
             // 
             // Load
             // 
-            this.Load.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Load.Location = new System.Drawing.Point(90, 836);
             this.Load.Name = "Load";
             this.Load.Size = new System.Drawing.Size(44, 23);
@@ -1369,7 +1323,6 @@
             // 
             // SpellBookButton
             // 
-            this.SpellBookButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SpellBookButton.Location = new System.Drawing.Point(816, 349);
             this.SpellBookButton.Name = "SpellBookButton";
             this.SpellBookButton.Size = new System.Drawing.Size(56, 23);
@@ -1382,6 +1335,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(884, 861);
             this.Controls.Add(this.SpellBookButton);
             this.Controls.Add(this.Load);
@@ -1439,7 +1393,6 @@
             this.Controls.Add(this.CharacterNameLabel);
             this.Controls.Add(this.CharacterName);
             this.Controls.Add(this.CoreStatPanel);
-            this.MinimumSize = new System.Drawing.Size(900, 900);
             this.Name = "CharacterSheet";
             this.Text = "CharacterSheet";
             this.AgeSizePanel.ResumeLayout(false);

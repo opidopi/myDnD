@@ -97,6 +97,7 @@
             this.AddToKnownSpells = new System.Windows.Forms.Button();
             this.PrepareSpell = new System.Windows.Forms.Button();
             this.RemoveSpell = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.SaveDC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ASlotsLvl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSlotsLvl1)).BeginInit();
@@ -308,7 +309,6 @@
             // 
             // selectedSpellLvl
             // 
-            this.selectedSpellLvl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedSpellLvl.AutoSize = true;
             this.selectedSpellLvl.Location = new System.Drawing.Point(498, 50);
             this.selectedSpellLvl.Name = "selectedSpellLvl";
@@ -318,8 +318,6 @@
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.DescriptionTextBox.Location = new System.Drawing.Point(403, 148);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(265, 395);
@@ -328,7 +326,6 @@
             // 
             // selectedSpellSchool
             // 
-            this.selectedSpellSchool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.selectedSpellSchool.AutoSize = true;
             this.selectedSpellSchool.Location = new System.Drawing.Point(557, 50);
             this.selectedSpellSchool.Name = "selectedSpellSchool";
@@ -771,11 +768,20 @@
             this.RemoveSpell.UseVisualStyleBackColor = true;
             this.RemoveSpell.Click += new System.EventHandler(this.RemoveSpell_Click);
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(403, 646);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(129, 20);
+            this.searchBox.TabIndex = 73;
+            // 
             // SpellBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(679, 809);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.RemoveSpell);
             this.Controls.Add(this.PrepareSpell);
             this.Controls.Add(this.AddToKnownSpells);
@@ -941,5 +947,6 @@
         private System.Windows.Forms.Button AddToKnownSpells;
         private System.Windows.Forms.Button PrepareSpell;
         private System.Windows.Forms.Button RemoveSpell;
+        private System.Windows.Forms.TextBox searchBox;
     }
 }

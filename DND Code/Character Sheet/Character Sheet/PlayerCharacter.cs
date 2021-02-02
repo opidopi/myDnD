@@ -623,6 +623,12 @@ namespace Character_Sheet
             Insight.SubType = "Wisdom";
             Skills.Add(Insight);
             AllStats.Add(Insight);
+            Intimidate = new Stat();
+            Intimidate.Name = "Intimidate";
+            Intimidate.Type = "Skill";
+            Intimidate.SubType = "Charisma";
+            Skills.Add(Intimidate);
+            AllStats.Add(Intimidate);
             Investigate = new Stat();
             Investigate.Name = "Investigate";
             Investigate.Type = "Skill";
