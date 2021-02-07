@@ -141,6 +141,7 @@ namespace Character_Sheet
             newChar.FeatsNtraits = FeatsNtraits;
             newChar.EquipmentList = EquipmentList;
             newChar.AttackList = AttackList;
+            newChar.SpellBooks = SpellBooks;
             newChar.AllStats = CharacterStats.AllStats;
             newChar.Proficiencies = CharacterStats.Proficiencies;
             newChar.Speed = CharacterStats.Speed;
@@ -169,6 +170,7 @@ namespace Character_Sheet
             FeatsNtraits = newChar.FeatsNtraits;
             EquipmentList = newChar.EquipmentList;
             AttackList = newChar.AttackList;
+            SpellBooks = newChar.SpellBooks;
             foreach(Stat pStat in CharacterStats.AllStats)
                 foreach(Stat ieStat in newChar.AllStats)
                     if(pStat.Name.Equals(ieStat.Name))
@@ -200,6 +202,7 @@ namespace Character_Sheet
             FeatsNtraits = new List<Feature>();
             EquipmentList = new List<Equipment>();
             AttackList = new List<Attack>();
+            SpellBooks = new List<CharSpellBook>();
             foreach (Stat pStat in CharacterStats.AllStats)
                 pStat.StatBase = 0;
             CharacterStats.Proficiencies = new List<Stat>();
@@ -969,6 +972,11 @@ namespace Character_Sheet
 
         }
         public List<Attack> AttackList
+        {
+            get;
+            set;
+        }
+        public List<CharSpellBook> SpellBooks
         {
             get;
             set;

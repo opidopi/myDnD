@@ -914,6 +914,8 @@ namespace Character_Sheet
 
         private void SpellBookButton_Click(object sender, EventArgs e)
         {
+            if (player.SpellBooks == null)
+                player.SpellBooks = new List<CharSpellBook>();
             SpellBookPicker sb = new SpellBookPicker(this);
             DialogResult result = sb.ShowDialog();
             if (result == DialogResult.OK && openSpellBooks.Count > 0)
