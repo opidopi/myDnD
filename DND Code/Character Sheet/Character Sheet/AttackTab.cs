@@ -20,6 +20,7 @@ namespace Character_Sheet
             cAttack = pAttack;
             charSheetMain = pCharSheetMain;
             NameLabel.Text = cAttack.Name;
+            Selected_CheckedChanged(null, null);
         }
 
         public void Calculate()
@@ -65,6 +66,10 @@ namespace Character_Sheet
             foreach (AttackTab aTab in charSheetMain.AttackPanel.Controls)
                 aTab.Selected.Checked = false;
             this.Selected.Checked = true;
+            string descString = "";
+            foreach (string line in cAttack.Description)
+                descString += line + "\n";
+            charSheetMain.AttackDescription.Text = descString;
         }
     }
 }

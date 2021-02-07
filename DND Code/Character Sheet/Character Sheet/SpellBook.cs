@@ -16,6 +16,8 @@ namespace Character_Sheet
     {
         CharacterSheet charSheetMain;
         CharSpellBook cSpellBook;
+        List<Spell> allSpells;
+        searchString sString;
         int spellSaveBonus;
         int spellAttackBonus;
         public SpellBook(CharacterSheet pCharSheet, CharSpellBook pSpellBook)
@@ -25,7 +27,7 @@ namespace Character_Sheet
             InitializeComponent();
             StreamReader reader = new StreamReader("AllSpells.json");
             string json = reader.ReadToEnd();
-            List<Spell> allSpells = JsonConvert.DeserializeObject<List<Spell>>(json);
+            allSpells = JsonConvert.DeserializeObject<List<Spell>>(json);
             allSpells = allSpells.OrderBy(o => o.Name).ToList();
             foreach (Spell spell in allSpells)
                 allSpellList.Items.Add(spell);
@@ -86,7 +88,7 @@ namespace Character_Sheet
             }
             calcPrepSpells();
             refreshCalcs();
-            searchString sString = new searchString(allSpells,allSpellList);
+            sString = new searchString(allSpells, cSpellBook.knownSpells, knownSpellList, allSpellList);
             searchBox.DataBindings.Add("Text", sString, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
@@ -94,13 +96,15 @@ namespace Character_Sheet
         {
             private string baseValue;
             private List<Spell> allSpells;
+            private List<Spell> knownSpells;
             private ListBox allSpellsListBox;
+            private ListBox knownSpellsListBox;
             public string Value
             {
                 get { return baseValue; }
                 set
                 {
-                    if (value == Value)
+                    if(value == null)
                         return;
                     baseValue = value;
                     allSpellsListBox.Items.Clear();
@@ -111,12 +115,22 @@ namespace Character_Sheet
                         }
                     if (allSpellsListBox.Items.Count > 0)
                         allSpellsListBox.SelectedIndex = 0;
+                    knownSpellsListBox.Items.Clear();
+                    foreach (Spell sp in knownSpells)
+                        if (sp.Name.ToLower().StartsWith(baseValue.ToLower()))
+                        {
+                            knownSpellsListBox.Items.Add(sp);
+                        }
+                    if (knownSpellsListBox.Items.Count > 0)
+                        knownSpellsListBox.SelectedIndex = 0;
                 }
             }
-            public searchString(List<Spell> pSpells, ListBox pLB)
+            public searchString(List<Spell> pSpells, List<Spell> kSpells, ListBox pkSpells, ListBox pLB)
             {
                 allSpells = pSpells;
                 allSpellsListBox = pLB;
+                knownSpells = kSpells;
+                knownSpellsListBox = pkSpells;
             }
 
         }
@@ -513,6 +527,119 @@ namespace Character_Sheet
         {
             charSheetMain.openSpellBooks.Remove(this);
             base.Close();
+        }
+
+        private void AddAllSpells_Click(object sender, EventArgs e)
+        {
+            List<Spell> sSpellList = new List<Spell>();
+            foreach (Spell sSpell in allSpellList.Items)
+                sSpellList.Add(sSpell);
+            foreach (Spell sSpell in sSpellList)
+            {
+                if (knownSpellList.Items.Contains(sSpell))
+                    continue;
+                else
+                {
+                    knownSpellList.Items.Add(sSpell);
+                    cSpellBook.knownSpells.Add(knownSpellList.SelectedItem as Spell);
+                }
+            }
+        }
+
+        private void SortCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SortCombo.SelectedItem.ToString().Equals("Alphabetical"))
+            {
+                allSpells = allSpells.OrderBy(o => o.Name).ToList();
+                cSpellBook.knownSpells = cSpellBook.knownSpells.OrderBy(o => o.Name).ToList();
+            }
+            else
+            {
+                allSpells = allSpells.OrderBy(o => o.Level).ToList();
+                cSpellBook.knownSpells = cSpellBook.knownSpells.OrderBy(o => o.Level).ToList();
+            }
+            FilterCombo_SelectedIndexChanged(sender, e);
+        }
+
+        private void FilterCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string searchValue = searchBox.Text;
+            searchBox.DataBindings.RemoveAt(0);
+            List<Spell> filteredAllSpellList = new List<Spell>();
+            List<Spell> filteredKnownSpellList = new List<Spell>();
+            switch (FilterCombo.SelectedItem.ToString())
+            {
+                case "Bard":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Bard)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Bard)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Cleric":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Cleric)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Cleric)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Druid":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Druid)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Druid)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Paladin":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Paladin)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Paladin)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Ranger":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Ranger)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Ranger)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Sorcerer":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Sorcerer)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Sorcerer)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Warlock":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Warlock)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Warlock)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                case "Wizard":
+                    foreach (Spell sp in allSpells)
+                        if (sp.Classes.Wizard)
+                            filteredAllSpellList.Add(sp);
+                    foreach (Spell sp in cSpellBook.knownSpells)
+                        if (sp.Classes.Wizard)
+                            filteredKnownSpellList.Add(sp);
+                    break;
+                default:
+                    break;
+            }
+            sString = new searchString(filteredAllSpellList, filteredKnownSpellList, knownSpellList, allSpellList);
+            searchBox.DataBindings.Add("Text", sString, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            searchBox.Text = "\n";
+            searchBox.Text = searchValue;
         }
     }
 }

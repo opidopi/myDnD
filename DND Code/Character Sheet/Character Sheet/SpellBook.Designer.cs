@@ -98,6 +98,12 @@
             this.PrepareSpell = new System.Windows.Forms.Button();
             this.RemoveSpell = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.SearchLabel = new System.Windows.Forms.Label();
+            this.SortCombo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.FilterCombo = new System.Windows.Forms.ComboBox();
+            this.AddAllSpells = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SaveDC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ASlotsLvl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSlotsLvl1)).BeginInit();
@@ -740,9 +746,9 @@
             // 
             // AddToKnownSpells
             // 
-            this.AddToKnownSpells.Location = new System.Drawing.Point(403, 559);
+            this.AddToKnownSpells.Location = new System.Drawing.Point(406, 687);
             this.AddToKnownSpells.Name = "AddToKnownSpells";
-            this.AddToKnownSpells.Size = new System.Drawing.Size(130, 23);
+            this.AddToKnownSpells.Size = new System.Drawing.Size(264, 23);
             this.AddToKnownSpells.TabIndex = 70;
             this.AddToKnownSpells.Text = "Add to Known Spells";
             this.AddToKnownSpells.UseVisualStyleBackColor = true;
@@ -750,9 +756,9 @@
             // 
             // PrepareSpell
             // 
-            this.PrepareSpell.Location = new System.Drawing.Point(404, 588);
+            this.PrepareSpell.Location = new System.Drawing.Point(406, 716);
             this.PrepareSpell.Name = "PrepareSpell";
-            this.PrepareSpell.Size = new System.Drawing.Size(129, 23);
+            this.PrepareSpell.Size = new System.Drawing.Size(265, 23);
             this.PrepareSpell.TabIndex = 71;
             this.PrepareSpell.Text = "Prepare Spell";
             this.PrepareSpell.UseVisualStyleBackColor = true;
@@ -760,9 +766,9 @@
             // 
             // RemoveSpell
             // 
-            this.RemoveSpell.Location = new System.Drawing.Point(404, 617);
+            this.RemoveSpell.Location = new System.Drawing.Point(407, 745);
             this.RemoveSpell.Name = "RemoveSpell";
-            this.RemoveSpell.Size = new System.Drawing.Size(129, 23);
+            this.RemoveSpell.Size = new System.Drawing.Size(262, 23);
             this.RemoveSpell.TabIndex = 72;
             this.RemoveSpell.Text = "Remove Spell";
             this.RemoveSpell.UseVisualStyleBackColor = true;
@@ -770,10 +776,80 @@
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(403, 646);
+            this.searchBox.Location = new System.Drawing.Point(403, 575);
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(129, 20);
+            this.searchBox.Size = new System.Drawing.Size(265, 20);
             this.searchBox.TabIndex = 73;
+            // 
+            // SearchLabel
+            // 
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Location = new System.Drawing.Point(403, 559);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(41, 13);
+            this.SearchLabel.TabIndex = 74;
+            this.SearchLabel.Text = "Search";
+            // 
+            // SortCombo
+            // 
+            this.SortCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SortCombo.FormattingEnabled = true;
+            this.SortCombo.Items.AddRange(new object[] {
+            "Alphabetical",
+            "Level"});
+            this.SortCombo.Location = new System.Drawing.Point(403, 617);
+            this.SortCombo.Name = "SortCombo";
+            this.SortCombo.Size = new System.Drawing.Size(123, 21);
+            this.SortCombo.TabIndex = 75;
+            this.SortCombo.SelectedIndexChanged += new System.EventHandler(this.SortCombo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(403, 601);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 76;
+            this.label1.Text = "Sort";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(529, 601);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "Filter";
+            // 
+            // FilterCombo
+            // 
+            this.FilterCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FilterCombo.FormattingEnabled = true;
+            this.FilterCombo.Items.AddRange(new object[] {
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Paladin",
+            "Ranger",
+            "Sorcerer",
+            "Warlock",
+            "Wizard",
+            "None"});
+            this.FilterCombo.Location = new System.Drawing.Point(532, 617);
+            this.FilterCombo.Name = "FilterCombo";
+            this.FilterCombo.Size = new System.Drawing.Size(135, 21);
+            this.FilterCombo.TabIndex = 78;
+            this.FilterCombo.SelectedIndexChanged += new System.EventHandler(this.FilterCombo_SelectedIndexChanged);
+            // 
+            // AddAllSpells
+            // 
+            this.AddAllSpells.Location = new System.Drawing.Point(406, 774);
+            this.AddAllSpells.Name = "AddAllSpells";
+            this.AddAllSpells.Size = new System.Drawing.Size(263, 23);
+            this.AddAllSpells.TabIndex = 79;
+            this.AddAllSpells.Text = "Add All Spells in List to Known Spells";
+            this.AddAllSpells.UseVisualStyleBackColor = true;
+            this.AddAllSpells.Click += new System.EventHandler(this.AddAllSpells_Click);
             // 
             // SpellBook
             // 
@@ -781,6 +857,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(679, 809);
+            this.Controls.Add(this.AddAllSpells);
+            this.Controls.Add(this.FilterCombo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SortCombo);
+            this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.RemoveSpell);
             this.Controls.Add(this.PrepareSpell);
@@ -948,5 +1030,11 @@
         private System.Windows.Forms.Button PrepareSpell;
         private System.Windows.Forms.Button RemoveSpell;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label SearchLabel;
+        private System.Windows.Forms.ComboBox SortCombo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox FilterCombo;
+        private System.Windows.Forms.Button AddAllSpells;
     }
 }
