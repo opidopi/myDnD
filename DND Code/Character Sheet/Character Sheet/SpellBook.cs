@@ -305,8 +305,7 @@ namespace Character_Sheet
                     else
                     {
                         knownSpellList.Items.Add(sSpell);
-                        knownSpellList.SelectedItem = allSpellList.SelectedItem;
-                        cSpellBook.knownSpells.Add(knownSpellList.SelectedItem as Spell);
+                        cSpellBook.knownSpells.Add(sSpell);
                     }
                 }
             }
@@ -476,7 +475,10 @@ namespace Character_Sheet
                                 ((Spell)lb.SelectedItem).Name + "from your known spells?",
                                 "Remove Spell", MessageBoxButtons.YesNoCancel);
                             if (result == DialogResult.Yes)
+                            {
+                                cSpellBook.knownSpells.Remove(lb.SelectedItem as Spell);
                                 lb.Items.Remove(lb.SelectedItem);
+                            }
                         }
                         else if(lb == Cantrips)
                         {
@@ -567,74 +569,88 @@ namespace Character_Sheet
             searchBox.DataBindings.RemoveAt(0);
             List<Spell> filteredAllSpellList = new List<Spell>();
             List<Spell> filteredKnownSpellList = new List<Spell>();
-            switch (FilterCombo.SelectedItem.ToString())
+            if(FilterCombo.SelectedItem == null)
             {
-                case "Bard":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Bard)
+                foreach (Spell sp in allSpells)
+                        filteredAllSpellList.Add(sp);
+                foreach (Spell sp in cSpellBook.knownSpells)
+                        filteredKnownSpellList.Add(sp);
+            }
+            else
+            {
+                switch (FilterCombo.SelectedItem.ToString())
+                {
+                    case "Bard":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Bard)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Bard)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Cleric":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Cleric)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Cleric)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Druid":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Druid)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Druid)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Paladin":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Paladin)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Paladin)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Ranger":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Ranger)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Ranger)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Sorcerer":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Sorcerer)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Sorcerer)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Warlock":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Warlock)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Warlock)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    case "Wizard":
+                        foreach (Spell sp in allSpells)
+                            if (sp.Classes.Wizard)
+                                filteredAllSpellList.Add(sp);
+                        foreach (Spell sp in cSpellBook.knownSpells)
+                            if (sp.Classes.Wizard)
+                                filteredKnownSpellList.Add(sp);
+                        break;
+                    default:
+                        foreach (Spell sp in allSpells)
                             filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Bard)
+                        foreach (Spell sp in cSpellBook.knownSpells)
                             filteredKnownSpellList.Add(sp);
-                    break;
-                case "Cleric":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Cleric)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Cleric)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Druid":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Druid)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Druid)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Paladin":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Paladin)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Paladin)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Ranger":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Ranger)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Ranger)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Sorcerer":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Sorcerer)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Sorcerer)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Warlock":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Warlock)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Warlock)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                case "Wizard":
-                    foreach (Spell sp in allSpells)
-                        if (sp.Classes.Wizard)
-                            filteredAllSpellList.Add(sp);
-                    foreach (Spell sp in cSpellBook.knownSpells)
-                        if (sp.Classes.Wizard)
-                            filteredKnownSpellList.Add(sp);
-                    break;
-                default:
-                    break;
+                        break;
+                }
             }
             sString = new searchString(filteredAllSpellList, filteredKnownSpellList, knownSpellList, allSpellList);
             searchBox.DataBindings.Add("Text", sString, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
